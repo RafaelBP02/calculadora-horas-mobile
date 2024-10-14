@@ -1,6 +1,16 @@
-# Welcome to your Expo app 👋
+# Bem vindo à calculadora de horas mobile 👋
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+*This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).*
+
+Este projeto tem como objetivo praticar/ estudar o desenvolvimento de uma aplicação mobile
+
+## Outros projetos
+
+| Stack | Localização |
+| ----- | ----------- |
+| Frontend-mobile | /app |
+| Frontend-web | [link](https://github.com/RafaelBP02/calculadora-de-horas) |
+| Backend  | [link](https://github.com/RafaelBP02/calculadora-de-horas-back) |
 
 ## Get started
 
