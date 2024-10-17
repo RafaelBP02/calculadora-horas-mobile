@@ -1,12 +1,85 @@
-import React from "react";
-import { Text, View } from "react-native";
+import { Conversions } from "@/utils/Conversions";
+import React, { useState } from "react";
+import {
+  Alert,
+  Button,
+  KeyboardAvoidingView,
+  Platform,
+  Text,
+  TextInput,
+  View,
+} from "react-native";
 
-export default function Calculator(){
-    
-    
-    return(
+export default function Calculator() {
+  const [inicioExpediente, setInicioExpediente] = useState<string>("");
+  const [inicioIntervalo, setInicioIntervalo] = useState<string>("");
+  const [fimIntervalo, setFimIntervalo] = useState<string>("");
+  const [fimExpediente, setFimExpediente] = useState<string>("");
+
+  const handleTimeSend = () => {
+    const dataIE = Conversions.parseTimeString(inicioExpediente);
+    const dataII = Conversions.parseTimeString(inicioIntervalo);
+    const dataFI = Conversions.parseTimeString(fimIntervalo);
+    // const dataFE = Conversions.parseTimeString(fimExpediente);
+
+    // incluir || dataFE === null
+    if (dataIE === null || dataII === null ||  dataFI === null) {
+      Alert.alert(
+        "Formato de hora inválido", "Por favor, apenas números, insira a hora no formato HH:MM."
+      );
+
+      return;
+    } 
+
+
+    console.log("sucesso dados validados")
+
+    //TODO: funcao para calcular a diferenca de horas
+    calculaHorarioSaida(dataIE, dataII, dataFI);
+  };
+
+  const calculaHorarioSaida = (horaEntrada: Date, inicioIntervalo: Date, fimIntervalo: Date) => {
+
+  }
+
+  return (
+    <KeyboardAvoidingView
+      behavior={Platform.OS == "ios" ? "padding" : "height"}
+    >
+      <View>
         <View>
-            <Text>Defina seus Horarios</Text>
+          <Text>Defina seus Horarios (8 horas de carga horaria)</Text>
         </View>
-    )
+        <View>
+          <TextInput
+            value={inicioExpediente}
+            placeholder="Hora início expediente (HH:MM)"
+            onChangeText={(text) => setInicioExpediente(text)}
+            keyboardType="numeric"
+          />
+          <TextInput
+            value={inicioIntervalo}
+            placeholder="Hora início intervalo (HH:MM)"
+            onChangeText={(text) => setInicioIntervalo(text)}
+            keyboardType="numeric"
+          />
+          <TextInput
+            value={fimIntervalo}
+            placeholder="Hora fim intervalo (HH:MM)"
+            onChangeText={(text) => setFimIntervalo(text)}
+            keyboardType="numeric"
+          />
+          {/* <TextInput
+            value={fimExpediente}
+            placeholder="Hora fim expediente (HH:MM)"
+            onChangeText={(text) => setFimExpediente(text)}
+            keyboardType="numeric"
+          /> */}
+        </View>
+        <View>
+          <Button title="calcular" onPress={() => handleTimeSend()} />
+        </View>
+      </View>
+    </KeyboardAvoidingView>
+  );
 }
