@@ -14,7 +14,7 @@ export default function Calculator() {
   const [inicioExpediente, setInicioExpediente] = useState<string>("");
   const [inicioIntervalo, setInicioIntervalo] = useState<string>("");
   const [fimIntervalo, setFimIntervalo] = useState<string>("");
-  const [fimExpediente, setFimExpediente] = useState<string>("");
+  // const [fimExpediente, setFimExpediente] = useState<string>("");
 
   const handleTimeSend = () => {
     const dataIE = Conversions.parseTimeString(inicioExpediente);
@@ -39,7 +39,13 @@ export default function Calculator() {
   };
 
   const calculaHorarioSaida = (horaEntrada: Date, inicioIntervalo: Date, fimIntervalo: Date) => {
+    const cargaHoraria: number = 8;
 
+    const horasJaTrabalhadas:number = inicioIntervalo.getTime() - horaEntrada.getTime();
+
+    const horarioDeSaida:Date = new Date(fimIntervalo.getTime() + cargaHoraria * 60 * 60 * 1000 - horasJaTrabalhadas)
+  
+    Alert.alert("Horario de Saída", horarioDeSaida.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false }));
   }
 
   return (
