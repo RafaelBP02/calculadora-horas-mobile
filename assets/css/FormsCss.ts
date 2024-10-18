@@ -27,16 +27,25 @@ const formCss = StyleSheet.create({
     marginBottom: 10,
   },
   formContainer: {
-    width: "80%",
+    width: '80%',
+    height: '50%',
 
-    alignItems: "center",
-    gap: 30,
-    backgroundColor: "#f0f0f0",
+    alignItems: 'center',
+    justifyContent: "space-between",
+
+    backgroundColor: '#f0f0f0',
+    elevation: 5
   },
   formItems: {
-    width:'70%',
-    gap: 10,
+    width:'80%',
+    gap: 20,
   },
+  formInput:{
+    fontSize: fontSizes.medium,
+    padding: 5,
+    justifyContent: 'center',
+    backgroundColor: '#e0e0e0'
+  }
 });
 
 export { formCss, colors };

@@ -78,22 +78,25 @@ export default function Calculator() {
       <View style={genericCss.container}>
         <View style={formCss.formContainer}>
           <View>
-            <Text>Defina seus Horarios (8 horas de carga horaria)</Text>
+            <Text>Calcule seus Horarios (8 horas de carga horaria)</Text>
           </View>
           <View style={formCss.formItems}>
             <TextInput
+              style={formCss.formInput}
               value={inicioExpediente}
               placeholder="Hora início expediente (HH:MM)"
               onChangeText={(text) => setInicioExpediente(text)}
               keyboardType="numeric"
             />
             <TextInput
+              style={formCss.formInput}
               value={inicioIntervalo}
               placeholder="Hora início intervalo (HH:MM)"
               onChangeText={(text) => setInicioIntervalo(text)}
               keyboardType="numeric"
             />
             <TextInput
+              style={formCss.formInput}
               value={fimIntervalo}
               placeholder="Hora fim intervalo (HH:MM)"
               onChangeText={(text) => setFimIntervalo(text)}
