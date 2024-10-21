@@ -1,8 +1,8 @@
 import { RootStackParamList } from "@/utils/customTypes";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import Home from "./home";
+import Home from "../views/home";
 import Calculator from "./calculator";
-import Login from "./login";
+import Login from "../views/login";
 
 export default function HomeScreen() {
   const Stack = createNativeStackNavigator<RootStackParamList>();
