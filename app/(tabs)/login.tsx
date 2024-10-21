@@ -12,8 +12,14 @@ import {
 } from "react-native";
 import { UserAuthentication } from "../controller/authenticationController";
 import { BearerToken } from "../models/authenticationModel";
+import { saveUserToken } from "@/utils/DeviceStorage";
+import { NativeStackScreenProps } from "react-native-screens/lib/typescript/native-stack/types";
+import { RootStackParamList } from "@/utils/customTypes";
 
-export default function Login() {
+type HomeProps = NativeStackScreenProps<RootStackParamList, "Login">;
+
+
+export default function Login({navigation}: HomeProps) {
   const [email, setEmail] = useState<string>("");
   const [senha, setSenha] = useState<string>("");
   const [dadosValidos, setDadosValidos] = useState<boolean>(false);
@@ -27,6 +33,9 @@ export default function Login() {
 
     try {
       const userToken = await UserAuthentication.login(email, senha);
+      saveUserToken(userToken.token).then(() =>
+        navigation.navigate("Home")
+      );
       console.log(userToken.token);
   
     } catch (error) {
