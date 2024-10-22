@@ -1,6 +1,6 @@
 import { formCss } from "@/assets/css/FormsCss";
 import { genericCss } from "@/assets/css/GenericCss";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import {
   Alert,
   Button,
@@ -15,14 +15,29 @@ import { BearerToken } from "../models/authenticationModel";
 import { saveUserToken } from "@/utils/DeviceStorage";
 import { NativeStackScreenProps } from "react-native-screens/lib/typescript/native-stack/types";
 import { RootStackParamList } from "@/utils/customTypes";
+import { jwtDecode } from "jwt-decode";
+import AuthContext from "@/contexts/Auth";
 
 type HomeProps = NativeStackScreenProps<RootStackParamList, "Login">;
 
+export interface DecodedJwt{
+  iss: string,
+  sub: string,
+  papel: string,
+  exp: number
+}
+
+export interface SubjectBody{
+  username: string,
+  userId: number
+}
 
 export default function Login({navigation}: HomeProps) {
   const [email, setEmail] = useState<string>("");
   const [senha, setSenha] = useState<string>("");
   const [dadosValidos, setDadosValidos] = useState<boolean>(false);
+
+  const {setUser} = useContext(AuthContext);
 
   const tratarEnvio = async () => {
     if (!email.includes("@") || !email.includes(".com")) {
@@ -33,16 +48,32 @@ export default function Login({navigation}: HomeProps) {
 
     try {
       const userToken = await UserAuthentication.login(email, senha);
-      saveUserToken(userToken.token).then(() =>
-        navigation.navigate("Home")
-      );
+      
       console.log(userToken.token);
+      decodeBearerToken(userToken.token);
   
     } catch (error) {
       console.error("Erro ao fazer login:", error);
     }
 
   };
+
+  const decodeBearerToken = (token: string) => {
+    if (!token) {
+      console.error("Erro ao recuperar o token");
+      return;
+    }
+
+    try {
+      const jwtPayload: DecodedJwt = jwtDecode<DecodedJwt>(token);
+      const subObject: SubjectBody = JSON.parse(jwtPayload.sub);
+
+      setUser({id: subObject.userId, email: subObject.username, role: jwtPayload.papel } )
+
+    } catch (error) {
+      console.error('Erro ao decodificar o JWT:', error);
+    }
+  }
 
   return (
     <KeyboardAvoidingView
