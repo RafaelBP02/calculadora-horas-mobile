@@ -51,6 +51,8 @@ export default function Login({navigation}: HomeProps) {
       
       console.log(userToken.token);
       decodeBearerToken(userToken.token);
+      
+      navigation.navigate("Home");
   
     } catch (error) {
       console.error("Erro ao fazer login:", error);
