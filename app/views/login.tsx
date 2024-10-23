@@ -101,6 +101,7 @@ export default function Login({navigation}: HomeProps) {
           />
           <View style={formCss.button}>
             <Button title="Enviar" onPress={() => tratarEnvio()} />
+            <Text onPress={() => navigation.navigate("Registration")}>Não possui uma conta?</Text>
           </View>
         </View>
       </View>
