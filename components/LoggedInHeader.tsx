@@ -1,12 +1,16 @@
-import AuthContext from "@/contexts/Auth";
+import AuthContext, { DEFAULT_VALUE } from "@/contexts/Auth";
 import React, { useContext } from "react";
 import { Button, ButtonProps, Text, View } from "react-native";
 
-interface HeaderButtonProps extends ButtonProps {}
 
-const LoggedInHeader: React.FC<HeaderButtonProps> = ({ onPress, title }) => {
+const LoggedInHeader = () => {
 
-  const {user} = useContext(AuthContext);
+  const {user, setUser} = useContext(AuthContext);
+
+  const logoutUser = () =>{
+    console.log("APERTOU");
+    setUser(DEFAULT_VALUE.user);
+  }
 
   if(!user.email)
     return null;
@@ -14,7 +18,7 @@ const LoggedInHeader: React.FC<HeaderButtonProps> = ({ onPress, title }) => {
   return (
     <View>
       <Text>Bem vindo(a) {user.email}</Text>
-      <Button onPress={onPress} title={title} />
+      <Button onPress={() => logoutUser()} title="Logout" />
     </View>
   );
 };

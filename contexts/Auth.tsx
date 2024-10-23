@@ -15,7 +15,7 @@ type PropsUserContext = {
   setUser: React.Dispatch<React.SetStateAction<UserType>>;
 };
 
-const DEFAULT_VALUE = {
+export const DEFAULT_VALUE = {
   user: {
     id: 0,
     email: "",
