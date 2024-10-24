@@ -1,3 +1,7 @@
 export interface BearerToken{
-    token: string;
+    token: string
+}
+
+export interface RegistrationResponse {
+    concluido: string
 }

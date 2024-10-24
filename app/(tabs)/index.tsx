@@ -6,6 +6,7 @@ import Login from "../views/login";
 import AuthContext, { AuthContextProvider, DEFAULT_VALUE } from "@/contexts/Auth";
 import LoggedInHeader from "@/components/LoggedInHeader";
 import { useContext } from "react";
+import Registration from "../views/registration";
 
 export default function HomeScreen() {
   const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -36,6 +37,11 @@ export default function HomeScreen() {
           name="Login"
           options={{ headerShown: false }}
           component={Login}
+        />
+        <Stack.Screen
+          name="Registration"
+          options={{ headerShown: false }}
+          component={Registration}
         />
       </Stack.Navigator>
     </AuthContextProvider>
