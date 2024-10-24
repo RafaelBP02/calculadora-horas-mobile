@@ -18,4 +18,23 @@ export class UserAuthentication{
 
         return await response.json();
     };
+
+    static async registration(email:string, pass:string, name: string, surename: string, workplace: string): Promise<>{
+        let response = await fetch(API_ENDPOINTS.SIGNUP,{
+            method: 'POST',
+            headers:{
+                Accept: 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                username: email,
+                password: pass,
+                name: name,
+                sureName: surename,
+                workPlace: workplace
+            })
+        })
+
+        return await response.json();
+    }
 }
