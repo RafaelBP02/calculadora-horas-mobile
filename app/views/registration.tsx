@@ -7,10 +7,10 @@ import { genericCss } from "@/assets/css/GenericCss";
 import { formCss } from "@/assets/css/FormsCss";
 import { UserAuthentication } from "../controller/authenticationController";
 
-type RegistrationProps = NativeStackScreenProps<RootStackParamList, "Registration">;
+type HomeProps = NativeStackScreenProps<RootStackParamList, "Registration">;
 
 
-export default function Registration({navigation}: RegistrationProps){
+export default function Registration({navigation}: HomeProps){
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [repeatPassword, setRepeatPassword] = useState<string>("");
@@ -18,12 +18,23 @@ export default function Registration({navigation}: RegistrationProps){
   const [surename, setSurename] = useState<string>("");
   const [workplace, setWorkplace] = useState<string>("");
 
+  const [dadosValidos, setDadosValidos] = useState<boolean>(false);
+
+
   const tratarRegistro = async () => {
-    console.log("CLICOU")
+
+    if (!email.includes("@") || !email.includes(".com")) {
+      setDadosValidos(false);
+      return;
+    }
+    console.log("CLICOU");
     
+    setDadosValidos(true);
+
     try {
       const userRegistration = await UserAuthentication.registration(email, password, name, surename, workplace);
-      console.log(userRegistration);
+
+      console.log(userRegistration.concluido);
       navigation.navigate("Login");
 
     } catch (error) {
@@ -33,9 +44,7 @@ export default function Registration({navigation}: RegistrationProps){
   }
 
   return (
-    <KeyboardAvoidingView
-      behavior={Platform.OS == "ios" ? "padding" : "height"}
-    >
+
       <View style={genericCss.container}>
         <View style={formCss.formContainer}>
         <View>
@@ -84,7 +93,6 @@ export default function Registration({navigation}: RegistrationProps){
           </View>
         </View>
       </View>
-    </KeyboardAvoidingView>
 
   );
     

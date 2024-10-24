@@ -35,7 +35,7 @@ export interface SubjectBody{
 export default function Login({navigation}: HomeProps) {
   const [email, setEmail] = useState<string>("");
   const [senha, setSenha] = useState<string>("");
-  const [dadosValidos, setDadosValidos] = useState<boolean>(false);
+  const [dadosValidos, setDadosValidos] = useState<boolean>(true);
 
   const {setUser} = useContext(AuthContext);
 
@@ -45,6 +45,8 @@ export default function Login({navigation}: HomeProps) {
       return;
     }
     console.log("ENVIADO!");
+    
+    setDadosValidos(false);
 
     try {
       const userToken = await UserAuthentication.login(email, senha);

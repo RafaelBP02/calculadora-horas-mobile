@@ -1,4 +1,4 @@
-import { BearerToken, RegistrationData } from "../models/authenticationModel"
+import { BearerToken, RegistrationResponse } from "../models/authenticationModel"
 import { API_ENDPOINTS } from "./api-endpoints"
 
 export class UserAuthentication{
@@ -19,7 +19,7 @@ export class UserAuthentication{
         return await response.json();
     };
 
-    static async registration(email:string, pass:string, name: string, surename: string, workplace: string): Promise<RegistrationData>{
+    static async registration(email:string, pass:string, name: string, surename: string, workplace: string): Promise<RegistrationResponse>{
         let response = await fetch(API_ENDPOINTS.SIGNUP,{
             method: 'POST',
             headers:{

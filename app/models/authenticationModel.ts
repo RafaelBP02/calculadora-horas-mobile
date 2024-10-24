@@ -1,11 +1,7 @@
 export interface BearerToken{
-    token: string;
+    token: string
 }
 
-export interface RegistrationData {
-    username: string,
-    password: string,
-    name: string,
-    sureName: string,
-    workPlace: string
+export interface RegistrationResponse {
+    concluido: string
 }
