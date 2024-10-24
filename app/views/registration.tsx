@@ -5,11 +5,12 @@ import { NativeStackScreenProps } from "react-native-screens/lib/typescript/nati
 import { Button, KeyboardAvoidingView, Platform, Text, TextInput, View } from "react-native";
 import { genericCss } from "@/assets/css/GenericCss";
 import { formCss } from "@/assets/css/FormsCss";
+import { UserAuthentication } from "../controller/authenticationController";
 
 type RegistrationProps = NativeStackScreenProps<RootStackParamList, "Registration">;
 
 
-export default function Registration(){
+export default function Registration({navigation}: RegistrationProps){
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [repeatPassword, setRepeatPassword] = useState<string>("");
@@ -17,9 +18,18 @@ export default function Registration(){
   const [surename, setSurename] = useState<string>("");
   const [workplace, setWorkplace] = useState<string>("");
 
-  const tratarEnvio = () => {
+  const tratarRegistro = async () => {
     console.log("CLICOU")
-    //TODO: REST REQUEST
+    
+    try {
+      const userRegistration = await UserAuthentication.registration(email, password, name, surename, workplace);
+      console.log(userRegistration);
+      navigation.navigate("Login");
+
+    } catch (error) {
+      console.error("erro na hora de cadastrar")
+    }
+    
   }
 
   return (
@@ -70,7 +80,7 @@ export default function Registration(){
             secureTextEntry={true}
           />
           <View style={formCss.button}>
-            <Button title="Enviar" onPress={() => tratarEnvio()} />
+            <Button title="Enviar" onPress={() => tratarRegistro()} />
           </View>
         </View>
       </View>
