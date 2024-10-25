@@ -12,7 +12,6 @@ import {
 } from "react-native";
 import { UserAuthentication } from "../controller/authenticationController";
 import { BearerToken } from "../models/authenticationModel";
-import { saveUserToken } from "@/utils/DeviceStorage";
 import { NativeStackScreenProps } from "react-native-screens/lib/typescript/native-stack/types";
 import { RootStackParamList } from "@/utils/customTypes";
 import { jwtDecode } from "jwt-decode";
