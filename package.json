@@ -19,6 +19,8 @@
     ],
     "collectCoverageFrom": [
       "**/*.{ts,tsx,js,jsx}",
+      "!**/app/models/**",
+      "!**/app/+*.{ts,tsx,js,jsx}",
       "!**/coverage/**",
       "!**/hooks/**",
       "!**/scripts/**",
