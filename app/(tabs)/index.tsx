@@ -1,4 +1,4 @@
-import { RootStackParamList } from "@/utils/customTypes";
+import { RootStackParamList } from "@/constants/customTypes";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Home from "../views/home";
 import Calculator from "./calculator";

@@ -1,7 +1,7 @@
 import { UserAuthentication } from "@/app/controller/authenticationController";
 import Login from "@/app/views/login";
 import AuthContext, { DEFAULT_VALUE, UserType } from "@/contexts/Auth";
-import { RootStackParamList } from "@/utils/customTypes";
+import { RootStackParamList } from "@/constants/customTypes";
 import { fireEvent, render, RenderAPI, waitFor } from "@testing-library/react-native";
 import { NativeStackNavigationProp } from "react-native-screens/lib/typescript/native-stack/types";
 

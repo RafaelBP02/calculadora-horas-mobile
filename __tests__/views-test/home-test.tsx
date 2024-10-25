@@ -6,7 +6,7 @@ import {
   NativeStackNavigationProp,
   NativeStackScreenProps,
 } from "react-native-screens/lib/typescript/native-stack/types";
-import { RootStackParamList } from "@/utils/customTypes";
+import { RootStackParamList } from "@/constants/customTypes";
 
 type HomeScreenNavigationProp = NativeStackNavigationProp<
   RootStackParamList,

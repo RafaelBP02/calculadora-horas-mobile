@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, RenderAPI, fireEvent, waitFor } from '@testing-library/react-native';
 import { NativeStackNavigationProp, NativeStackScreenProps } from 'react-native-screens/lib/typescript/native-stack/types';
-import { RootStackParamList } from '@/utils/customTypes';
+import { RootStackParamList } from '@/constants/customTypes';
 import Registration from '@/app/views/registration';
 import { UserAuthentication } from '@/app/controller/authenticationController';
 

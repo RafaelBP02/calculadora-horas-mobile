@@ -13,7 +13,7 @@ import {
 import { UserAuthentication } from "../controller/authenticationController";
 import { BearerToken } from "../models/authenticationModel";
 import { NativeStackScreenProps } from "react-native-screens/lib/typescript/native-stack/types";
-import { RootStackParamList } from "@/utils/customTypes";
+import { RootStackParamList } from "@/constants/customTypes";
 import { jwtDecode } from "jwt-decode";
 import AuthContext from "@/contexts/Auth";
 
