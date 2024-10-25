@@ -1,7 +1,7 @@
 import { formCss } from "@/assets/css/FormsCss";
 import { genericCss } from "@/assets/css/GenericCss";
 import AuthContext from "@/contexts/Auth";
-import { RootStackParamList } from "@/utils/customTypes";
+import { RootStackParamList } from "@/constants/customTypes";
 import React, { useContext, useEffect } from "react";
 import { Button, Text, View } from "react-native";
 import { NativeStackScreenProps } from "react-native-screens/lib/typescript/native-stack/types";

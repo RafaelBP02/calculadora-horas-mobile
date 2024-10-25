@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import { RootStackParamList } from "@/utils/customTypes";
+import { RootStackParamList } from "@/constants/customTypes";
 import { NativeStackScreenProps } from "react-native-screens/lib/typescript/native-stack/types";
 import { Button, KeyboardAvoidingView, Platform, Text, TextInput, View } from "react-native";
 import { genericCss } from "@/assets/css/GenericCss";
