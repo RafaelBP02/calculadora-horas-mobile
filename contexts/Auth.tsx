@@ -4,13 +4,13 @@ interface Props{
   children: React.ReactNode
 }
 
-type UserType = {
+export type UserType = {
   id: number;
   email: string;
   role: string;
 };
 
-type PropsUserContext = {
+export type PropsUserContext = {
   user: UserType;
   setUser: React.Dispatch<React.SetStateAction<UserType>>;
 };
