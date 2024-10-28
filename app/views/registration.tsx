@@ -14,9 +14,9 @@ import { genericCss } from "@/assets/css/GenericCss";
 import { colors, formCss } from "@/assets/css/FormsCss";
 import { UserAuthentication } from "../controller/authenticationController";
 
-type HomeProps = NativeStackScreenProps<RootStackParamList, "Registration">;
+type NavProps = NativeStackScreenProps<RootStackParamList, "Registration">;
 
-export default function Registration({ navigation }: HomeProps) {
+export default function Registration({ navigation }: NavProps) {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [repeatPassword, setRepeatPassword] = useState<string>("");

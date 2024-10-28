@@ -6,9 +6,9 @@ import React, { useContext, useEffect } from "react";
 import { Button, Text, View } from "react-native";
 import { NativeStackScreenProps } from "react-native-screens/lib/typescript/native-stack/types";
 
-type HomeProps = NativeStackScreenProps<RootStackParamList, "Home">;
+type NavProps = NativeStackScreenProps<RootStackParamList, "Home">;
 
-export default function Home({ navigation }: HomeProps) {
+export default function Home({ navigation }: NavProps) {
 
   const {user} = useContext(AuthContext);
 
@@ -17,7 +17,6 @@ export default function Home({ navigation }: HomeProps) {
 
   return (
     <View style={genericCss.container}>
-      {user.email && <Text style={formCss.title}>Bem vindo(a) {user.email}</Text>}
       <View style={formCss.button}>
         <Button
           title="calculadora"

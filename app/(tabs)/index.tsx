@@ -1,12 +1,12 @@
 import { RootStackParamList } from "@/constants/customTypes";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Home from "../views/home";
-import Calculator from "./calculator";
 import Login from "../views/login";
 import AuthContext, { AuthContextProvider, DEFAULT_VALUE } from "@/contexts/Auth";
 import LoggedInHeader from "@/components/LoggedInHeader";
 import { useContext } from "react";
 import Registration from "../views/registration";
+import Calculator from "../views/calculator";
 
 export default function HomeScreen() {
   const Stack = createNativeStackNavigator<RootStackParamList>();

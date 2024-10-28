@@ -11,11 +11,11 @@ jest.mock('@/app/controller/authenticationController', () => ({
   },
 }));
 
-type HomeProps = NativeStackNavigationProp<RootStackParamList, "Registration">;
+type NavProps = NativeStackNavigationProp<RootStackParamList, "Registration">;
 
 describe('Registration Component', () => {
   const mockNavigate = jest.fn();
-  const mockNavigation: HomeProps = {
+  const mockNavigation: NavProps = {
     navigate: mockNavigate,
   } as any;
   const mockRoute: any = {};

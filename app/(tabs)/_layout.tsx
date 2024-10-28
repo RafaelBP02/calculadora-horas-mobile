@@ -24,7 +24,7 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="calculator"
+        name="calculatorTab"
         options={{
           title: 'Calculadora',
           tabBarIcon: ({ color, focused }) => (

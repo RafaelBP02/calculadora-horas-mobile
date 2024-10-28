@@ -17,7 +17,7 @@ import { RootStackParamList } from "@/constants/customTypes";
 import { jwtDecode } from "jwt-decode";
 import AuthContext from "@/contexts/Auth";
 
-type HomeProps = NativeStackScreenProps<RootStackParamList, "Login">;
+type NavProps = NativeStackScreenProps<RootStackParamList, "Login">;
 
 export interface DecodedJwt{
   iss: string,
@@ -31,7 +31,7 @@ export interface SubjectBody{
   userId: number
 }
 
-export default function Login({navigation}: HomeProps) {
+export default function Login({navigation}: NavProps) {
   const [email, setEmail] = useState<string>("");
   const [senha, setSenha] = useState<string>("");
   const [dadosValidos, setDadosValidos] = useState<boolean>(true);

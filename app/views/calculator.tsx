@@ -1,5 +1,6 @@
 import { colors, formCss } from "@/assets/css/FormsCss";
 import { genericCss } from "@/assets/css/GenericCss";
+import { RootStackParamList } from "@/constants/customTypes";
 import { Conversions } from "@/utils/Conversions";
 import React, { useState } from "react";
 import {
@@ -11,8 +12,12 @@ import {
   TextInput,
   View,
 } from "react-native";
+import { NativeStackScreenProps } from "react-native-screens/lib/typescript/native-stack/types";
 
-export default function Calculator() {
+type NavProps = NativeStackScreenProps<RootStackParamList, "Calculator">;
+
+
+export default function Calculator({navigation}: NavProps) {
   const [inicioExpediente, setInicioExpediente] = useState<string>("");
   const [inicioIntervalo, setInicioIntervalo] = useState<string>("");
   const [fimIntervalo, setFimIntervalo] = useState<string>("");
