@@ -87,7 +87,7 @@ export default function Login({navigation}: HomeProps) {
           <Text style={formCss.formTitle}>LOGIN</Text>
           <TextInput
             style={formCss.formInput}
-            placeholder="usuaruio@mail.com"
+            placeholder="usuário@mail.com"
             value={email}
             onChangeText={setEmail}
           />

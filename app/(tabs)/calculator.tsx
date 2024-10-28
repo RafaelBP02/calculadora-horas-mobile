@@ -77,9 +77,7 @@ export default function Calculator() {
     >
       <View style={genericCss.container}>
         <View style={formCss.formContainer}>
-          <View>
-            <Text>Calcule seus Horarios (8 horas de carga horaria)</Text>
-          </View>
+          <Text style={formCss.formTitle}>Calculadora do Ponto - 8 horas</Text>
           <View style={formCss.formItems}>
             <TextInput
               style={formCss.formInput}

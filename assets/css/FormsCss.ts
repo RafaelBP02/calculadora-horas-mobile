@@ -38,7 +38,6 @@ const formCss = StyleSheet.create({
     elevation: 5
   },
   formItems: {
-    width:'80%',
     gap: 20,
   },
   formInput:{
@@ -50,6 +49,7 @@ const formCss = StyleSheet.create({
     backgroundColor: colors.shadow
   },
   formTitle:{
+    flexShrink: 1,
     width:'100%',
     textAlign: 'center',
 
