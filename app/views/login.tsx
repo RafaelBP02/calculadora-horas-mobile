@@ -1,4 +1,4 @@
-import { formCss } from "@/assets/css/FormsCss";
+import { colors, formCss } from "@/assets/css/FormsCss";
 import { genericCss } from "@/assets/css/GenericCss";
 import React, { useContext, useState } from "react";
 import {
@@ -84,9 +84,7 @@ export default function Login({navigation}: HomeProps) {
     >
       <View style={genericCss.container}>
         <View style={formCss.formContainer}>
-        <View>
-            <Text>LOGIN</Text>
-          </View>
+          <Text style={formCss.formTitle}>LOGIN</Text>
           <TextInput
             style={formCss.formInput}
             placeholder="usuaruio@mail.com"
@@ -101,7 +99,7 @@ export default function Login({navigation}: HomeProps) {
             secureTextEntry={true}
           />
           <View style={formCss.button}>
-            <Button title="Enviar" onPress={() => tratarEnvio()} />
+            <Button color={colors.primary} title="Enviar" onPress={() => tratarEnvio()} />
             <Text onPress={() => navigation.navigate("Registration")}>Não possui uma conta?</Text>
           </View>
         </View>

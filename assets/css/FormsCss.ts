@@ -6,6 +6,7 @@ const colors = {
   text: "#2c3e50",
   white: "#ffffff",
   black: "#000000",
+  shadow: '#e0e0e0'
 };
 
 const spacing = {
@@ -41,10 +42,22 @@ const formCss = StyleSheet.create({
     gap: 20,
   },
   formInput:{
+    minWidth: '90%',
+
     fontSize: fontSizes.medium,
     padding: 5,
     justifyContent: 'center',
-    backgroundColor: '#e0e0e0'
+    backgroundColor: colors.shadow
+  },
+  formTitle:{
+    width:'100%',
+    textAlign: 'center',
+
+    fontSize: fontSizes.large,
+    fontWeight: 'bold',
+    
+    color: colors.white,
+    backgroundColor: colors.shadow
   },
   title:{
     position: 'absolute',
