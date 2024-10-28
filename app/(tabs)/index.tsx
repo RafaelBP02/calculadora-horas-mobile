@@ -12,7 +12,6 @@ export default function HomeScreen() {
   const Stack = createNativeStackNavigator<RootStackParamList>();
 
   return (
-    <AuthContextProvider>
       <Stack.Navigator>
         <Stack.Screen
           name="Home"
@@ -22,16 +21,6 @@ export default function HomeScreen() {
               <LoggedInHeader/>
             ),
           }}
-        />
-        <Stack.Screen
-          name="Calculator"
-          component={Calculator}
-          options={{
-            headerRight: () => (
-              <LoggedInHeader/>
-            ),
-          }}
-          
         />
         <Stack.Screen
           name="Login"
@@ -44,6 +33,5 @@ export default function HomeScreen() {
           component={Registration}
         />
       </Stack.Navigator>
-    </AuthContextProvider>
   );
 }

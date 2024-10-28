@@ -1,8 +1,9 @@
 import { colors, formCss } from "@/assets/css/FormsCss";
 import { genericCss } from "@/assets/css/GenericCss";
 import { RootStackParamList } from "@/constants/customTypes";
+import AuthContext from "@/contexts/Auth";
 import { Conversions } from "@/utils/Conversions";
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import {
   Alert,
   Button,
@@ -18,6 +19,8 @@ type NavProps = NativeStackScreenProps<RootStackParamList, "Calculator">;
 
 
 export default function Calculator({navigation}: NavProps) {
+  const {user} = useContext(AuthContext);
+
   const [inicioExpediente, setInicioExpediente] = useState<string>("");
   const [inicioIntervalo, setInicioIntervalo] = useState<string>("");
   const [fimIntervalo, setFimIntervalo] = useState<string>("");
@@ -75,6 +78,10 @@ export default function Calculator({navigation}: NavProps) {
     setInicioIntervalo("");
     setFimIntervalo("");
   }
+
+  useEffect (() => {
+    console.log(user.email)
+  }, [user]) 
 
   return (
     <KeyboardAvoidingView

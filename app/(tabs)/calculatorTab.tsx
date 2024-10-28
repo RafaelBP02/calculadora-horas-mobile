@@ -11,14 +11,13 @@ export default function CalculatorTab() {
   const Stack = createNativeStackNavigator<RootStackParamList>();
 
   return (
-    <AuthContextProvider>
       <Stack.Navigator>
         <Stack.Screen
           name="Calculator"
           component={Calculator}
           options={{
             headerRight: () => (
-            <LoggedInHeader />
+              <LoggedInHeader/>
             ),
           }}
         />
@@ -32,6 +31,5 @@ export default function CalculatorTab() {
           }}
         />
       </Stack.Navigator>
-    </AuthContextProvider>
   );
 }
