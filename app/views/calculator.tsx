@@ -80,7 +80,6 @@ export default function Calculator({navigation}: NavProps) {
   }
 
   useEffect (() => {
-    console.log(user.email)
   }, [user]) 
 
   return (
