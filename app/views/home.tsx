@@ -1,4 +1,4 @@
-import { formCss } from "@/assets/css/FormsCss";
+import { colors, formCss } from "@/assets/css/FormsCss";
 import { genericCss } from "@/assets/css/GenericCss";
 import AuthContext from "@/contexts/Auth";
 import { RootStackParamList } from "@/constants/customTypes";
@@ -17,15 +17,16 @@ export default function Home({ navigation }: HomeProps) {
 
   return (
     <View style={genericCss.container}>
-      <Text>Bem vindo(a) {user.email}</Text>
-      {user.email && <Text>CALCULADORA DE HORAS</Text>}
+      {user.email && <Text style={formCss.title}>Bem vindo(a) {user.email}</Text>}
       <View style={formCss.button}>
         <Button
           title="calculadora"
+          color={colors.primary}
           onPress={() => navigation.navigate("Calculator")}
         />
         {!user.email && <Button
           title="login"
+          color={colors.primary}
           onPress={() => navigation.navigate("Login")}
         />}
       </View>

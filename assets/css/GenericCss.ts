@@ -3,7 +3,7 @@ import { StyleSheet } from 'react-native';
 const genericCss = StyleSheet.create({
     container: {
         flexDirection: 'column',
-        width: '100%',
+        width: 'auto',
         height: '100%',
 
         justifyContent: 'center',

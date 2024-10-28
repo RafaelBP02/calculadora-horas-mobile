@@ -45,6 +45,16 @@ const formCss = StyleSheet.create({
     padding: 5,
     justifyContent: 'center',
     backgroundColor: '#e0e0e0'
+  },
+  title:{
+    position: 'absolute',
+    top:0,
+
+    alignSelf: 'flex-start',
+    marginLeft: 20,
+    marginTop: 10,
+
+    fontSize: 18
   }
 });
 
