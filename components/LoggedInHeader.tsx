@@ -1,3 +1,4 @@
+import { colors } from "@/assets/css/FormsCss";
 import AuthContext, { DEFAULT_VALUE } from "@/contexts/Auth";
 import React, { useContext } from "react";
 import { Button, ButtonProps, Text, View } from "react-native";
@@ -18,7 +19,7 @@ const LoggedInHeader = () => {
   return (
     <View>
       <Text>Bem vindo(a) {user.email}</Text>
-      <Button onPress={() => logoutUser()} title="Logout" />
+      <Button color={colors.primary} onPress={() => logoutUser()} title="Logout" />
     </View>
   );
 };

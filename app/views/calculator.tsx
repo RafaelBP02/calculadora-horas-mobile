@@ -1,7 +1,9 @@
 import { colors, formCss } from "@/assets/css/FormsCss";
 import { genericCss } from "@/assets/css/GenericCss";
+import { RootStackParamList } from "@/constants/customTypes";
+import AuthContext from "@/contexts/Auth";
 import { Conversions } from "@/utils/Conversions";
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import {
   Alert,
   Button,
@@ -11,8 +13,14 @@ import {
   TextInput,
   View,
 } from "react-native";
+import { NativeStackScreenProps } from "react-native-screens/lib/typescript/native-stack/types";
 
-export default function Calculator() {
+type NavProps = NativeStackScreenProps<RootStackParamList, "Calculator">;
+
+
+export default function Calculator({navigation}: NavProps) {
+  const {user} = useContext(AuthContext);
+
   const [inicioExpediente, setInicioExpediente] = useState<string>("");
   const [inicioIntervalo, setInicioIntervalo] = useState<string>("");
   const [fimIntervalo, setFimIntervalo] = useState<string>("");
@@ -71,15 +79,16 @@ export default function Calculator() {
     setFimIntervalo("");
   }
 
+  useEffect (() => {
+  }, [user]) 
+
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS == "ios" ? "padding" : "height"}
     >
       <View style={genericCss.container}>
         <View style={formCss.formContainer}>
-          <View>
-            <Text>Calcule seus Horarios (8 horas de carga horaria)</Text>
-          </View>
+          <Text style={formCss.formTitle}>Calculadora do Ponto - 8 horas</Text>
           <View style={formCss.formItems}>
             <TextInput
               style={formCss.formInput}

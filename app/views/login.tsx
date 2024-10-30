@@ -1,4 +1,4 @@
-import { formCss } from "@/assets/css/FormsCss";
+import { colors, formCss } from "@/assets/css/FormsCss";
 import { genericCss } from "@/assets/css/GenericCss";
 import React, { useContext, useState } from "react";
 import {
@@ -17,7 +17,7 @@ import { RootStackParamList } from "@/constants/customTypes";
 import { jwtDecode } from "jwt-decode";
 import AuthContext from "@/contexts/Auth";
 
-type HomeProps = NativeStackScreenProps<RootStackParamList, "Login">;
+type NavProps = NativeStackScreenProps<RootStackParamList, "Login">;
 
 export interface DecodedJwt{
   iss: string,
@@ -31,7 +31,7 @@ export interface SubjectBody{
   userId: number
 }
 
-export default function Login({navigation}: HomeProps) {
+export default function Login({navigation}: NavProps) {
   const [email, setEmail] = useState<string>("");
   const [senha, setSenha] = useState<string>("");
   const [dadosValidos, setDadosValidos] = useState<boolean>(true);
@@ -84,12 +84,10 @@ export default function Login({navigation}: HomeProps) {
     >
       <View style={genericCss.container}>
         <View style={formCss.formContainer}>
-        <View>
-            <Text>LOGIN</Text>
-          </View>
+          <Text style={formCss.formTitle}>LOGIN</Text>
           <TextInput
             style={formCss.formInput}
-            placeholder="usuaruio@mail.com"
+            placeholder="usuário@mail.com"
             value={email}
             onChangeText={setEmail}
           />
@@ -101,7 +99,7 @@ export default function Login({navigation}: HomeProps) {
             secureTextEntry={true}
           />
           <View style={formCss.button}>
-            <Button title="Enviar" onPress={() => tratarEnvio()} />
+            <Button color={colors.primary} title="Enviar" onPress={() => tratarEnvio()} />
             <Text onPress={() => navigation.navigate("Registration")}>Não possui uma conta?</Text>
           </View>
         </View>
