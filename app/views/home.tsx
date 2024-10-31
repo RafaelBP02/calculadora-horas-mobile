@@ -6,6 +6,7 @@ import React, { useContext, useEffect } from "react";
 import { Button, Text, View } from "react-native";
 import { NativeStackScreenProps } from "react-native-screens/lib/typescript/native-stack/types";
 
+
 type NavProps = NativeStackScreenProps<RootStackParamList, "Home">;
 
 export default function Home({ navigation }: NavProps) {
@@ -27,6 +28,11 @@ export default function Home({ navigation }: NavProps) {
           title="login"
           color={colors.primary}
           onPress={() => navigation.navigate("Login")}
+        />}
+        {user.role === "ADMINISTRADOR" &&<Button
+          title="edit users"
+          color={colors.primary}
+          onPress={() => navigation.navigate("EditUsers")}
         />}
       </View>
     </View>
