@@ -16,6 +16,7 @@ import { NativeStackScreenProps } from "react-native-screens/lib/typescript/nati
 import { RootStackParamList } from "@/constants/customTypes";
 import { jwtDecode } from "jwt-decode";
 import AuthContext from "@/contexts/Auth";
+import TokenContext from "@/contexts/Token";
 
 type NavProps = NativeStackScreenProps<RootStackParamList, "Login">;
 
@@ -37,6 +38,7 @@ export default function Login({navigation}: NavProps) {
   const [dadosValidos, setDadosValidos] = useState<boolean>(true);
 
   const {setUser} = useContext(AuthContext);
+  const {setToken} = useContext(TokenContext);
 
   const tratarEnvio = async () => {
     if (!email.includes("@") || !email.includes(".com")) {
@@ -51,6 +53,7 @@ export default function Login({navigation}: NavProps) {
       const userToken = await UserAuthentication.login(email, senha);
       
       console.log(userToken.token);
+      setToken(userToken.token);
       decodeBearerToken(userToken.token);
       
       navigation.navigate("Home");
