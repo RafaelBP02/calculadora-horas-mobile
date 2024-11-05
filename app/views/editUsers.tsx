@@ -1,4 +1,5 @@
 import { genericCss } from "@/assets/css/GenericCss";
+import { tableCss } from "@/assets/css/TableCss";
 import { RootStackParamList } from "@/constants/customTypes";
 import React, { useContext, useEffect, useState } from "react";
 import {
@@ -79,10 +80,10 @@ export default function EditUsers({ navigation }: NavProps) {
         </View>
       )}
       {!loading && (
-        <View style={genericCss.container}>
+        <View style={genericCss.mediumContainer}>
           <FlatList
-            contentContainerStyle={{ marginHorizontal: 20 }}
             data={listToRender}
+            
             renderItem={({ item }) => <ListItem data={item}/>}
             keyExtractor={(item) => item.id.toString()}
             onEndReached={() => updateListRendering(allUsers)}
@@ -101,9 +102,9 @@ export default function EditUsers({ navigation }: NavProps) {
 
 function ListItem({data}: {data:CustomUser}) {
   return (
-    <View >
-      <Text >{data.name || 'Nome não disponível'}</Text>
-      <Text >{data.workplace || 'Local de trabalho não disponível'}</Text>
+    <View style={tableCss.row}>
+      <Text style={tableCss.cell}>{data.name || 'Nome não disponível'}</Text>
+      <Text style={tableCss.cell}>{data.workplace || 'Local de trabalho não disponível'}</Text>
       <TouchableOpacity onPress={() => console.log(`usuario: ${data.name, data.id}`)}>
         <Ionicons name="pencil" size={20} color={colors.primary} />
       </TouchableOpacity>
@@ -111,14 +112,3 @@ function ListItem({data}: {data:CustomUser}) {
   );
 }
 
-const styles = StyleSheet.create({
-  row: {
-    width: "90%",
-    padding: 10,
-    alignItems: "center",
-    borderWidth: 0.5,
-  },
-  cell: {
-    flex: 1,
-  },
-});
