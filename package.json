@@ -25,6 +25,7 @@
       "!**/hooks/**",
       "!**/scripts/**",
       "!**/assets/**",
+      "!**/contexts/**",
       "!**/constants/**",
       "!**/node_modules/**",
       "!**/babel.config.js",

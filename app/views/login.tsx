@@ -90,7 +90,7 @@ export default function Login({navigation}: NavProps) {
           <Text style={formCss.formTitle}>LOGIN</Text>
           <TextInput
             style={formCss.formInput}
-            placeholder="usuário@mail.com"
+            placeholder="usuario@mail.com"
             value={email}
             onChangeText={setEmail}
           />

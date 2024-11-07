@@ -1,18 +1,30 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react-native';
 import { Alert } from 'react-native';
-import Calculator from '@/app/(tabs)/calculator';
+import Calculator from '@/app/views/calculator'
+import { NativeStackNavigationProp } from 'react-native-screens/lib/typescript/native-stack/types';
+import { RootStackParamList } from '@/constants/customTypes';
 
 jest.spyOn(Alert, 'alert');
 
+type HomeScreenNavigationProp = NativeStackNavigationProp<
+  RootStackParamList,
+  "Calculator"
+>;
+
 describe('Calculator Component', () => {
+  const mockNavigation: HomeScreenNavigationProp = {
+    navigate: jest.fn(),
+  } as any;
+  const mockRoute: any = {};
+  
   beforeEach(() => {
     jest.clearAllMocks();
   });
 
   it('should show alert for invalid time format', () => {
 
-    const { getByPlaceholderText, getByText } = render(<Calculator />);
+    const { getByPlaceholderText, getByText } = render(<Calculator navigation={mockNavigation} route={mockRoute}/>);
 
     fireEvent.changeText(getByPlaceholderText('Hora início expediente (HH:MM)'), 'invalid');
     fireEvent.press(getByText('calcular'));

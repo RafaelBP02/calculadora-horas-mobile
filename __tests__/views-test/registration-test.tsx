@@ -42,8 +42,8 @@ describe('Registration Component', () => {
     fireEvent.changeText(getByPlaceholderText('Seu Nome'), 'John');
     fireEvent.changeText(getByPlaceholderText('Seu Sobrenome'), 'Doe');
     fireEvent.changeText(getByPlaceholderText('Seu Local de Trabalho'), 'Workplace');
-    fireEvent.changeText(getByPlaceholderText('digite sua senha'), 'password');
-    fireEvent.changeText(getByPlaceholderText('repita sua senha'), 'password');
+    fireEvent.changeText(getByPlaceholderText('Digite sua senha'), 'password');
+    fireEvent.changeText(getByPlaceholderText('Repita sua senha'), 'password');
 
     fireEvent.press(getByText('Enviar'));
 

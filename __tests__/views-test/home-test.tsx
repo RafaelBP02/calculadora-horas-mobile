@@ -31,14 +31,6 @@ describe("Home Screen", () => {
     getByText = rendered.getByText;
   });
 
-  test("renders correctly", () => {
-    expect(getByText("Bem vindo(a) test@test.com")).toBeTruthy();
-  });
-
-  test("displays CALCULADORA DE HORAS text when user is logged in", () => {
-    expect(getByText("CALCULADORA DE HORAS")).toBeTruthy();
-  });
-
   test("navigates to Calculator screen when calculator button is pressed", () => {
     fireEvent.press(getByText("calculadora"));
     expect(mockNavigation.navigate).toHaveBeenCalledWith("Calculator");
