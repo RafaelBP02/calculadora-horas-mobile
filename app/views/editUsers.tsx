@@ -82,8 +82,8 @@ export default function EditUsers({ navigation }: NavProps) {
       {!loading && (
         <View style={genericCss.mediumContainer}>
           <FlatList
+            testID="flatlist"
             data={listToRender}
-            
             renderItem={({ item }) => <ListItem data={item}/>}
             keyExtractor={(item) => item.id.toString()}
             onEndReached={() => updateListRendering(allUsers)}
@@ -106,7 +106,7 @@ function ListItem({data}: {data:CustomUser}) {
       <Text style={tableCss.cell}>{data.name || 'Nome não disponível'}</Text>
       <Text style={tableCss.cell}>{data.workplace || 'Local de trabalho não disponível'}</Text>
       <TouchableOpacity onPress={() => console.log(`usuario: ${data.name, data.id}`)}>
-        <Ionicons name="pencil" size={20} color={colors.primary} />
+        <Ionicons testID="pencilBtn" name="pencil" size={20} color={colors.primary} />
       </TouchableOpacity>
     </View>
   );
