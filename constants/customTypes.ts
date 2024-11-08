@@ -4,4 +4,5 @@ export type RootStackParamList = {
     Login: undefined;
     Registration: undefined;
     EditUsers: undefined;
+    UserEditorTool: undefined;
   };
