@@ -44,12 +44,12 @@ describe("Registration Component", () => {
   });
 
   it('should render correctly', () => {
-    expect(getByPlaceholderText('usuaruio@mail.com')).toBeTruthy();
+    expect(getByPlaceholderText('usuario@mail.com')).toBeTruthy();
   });
 
   it('should handle login submission', async () => {
 
-    fireEvent.changeText(getByPlaceholderText('usuaruio@mail.com'), 'test@test.com');
+    fireEvent.changeText(getByPlaceholderText('usuario@mail.com'), 'test@test.com');
     fireEvent.changeText(getByPlaceholderText('digite sua senha'), 'password');
 
     fireEvent.press(getByText('Enviar'));
@@ -63,7 +63,7 @@ describe("Registration Component", () => {
 
   it('should not proceed with invalid email', async () => {
 
-    fireEvent.changeText(getByPlaceholderText('usuaruio@mail.com'), 'invalid-email');
+    fireEvent.changeText(getByPlaceholderText('usuario@mail.com'), 'invalid-email');
 
     fireEvent.press(getByText('Enviar'));
 

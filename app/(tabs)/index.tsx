@@ -7,6 +7,7 @@ import LoggedInHeader from "@/components/LoggedInHeader";
 import { useContext } from "react";
 import Registration from "../views/registration";
 import Calculator from "../views/calculator";
+import EditUsers from "../views/editUsers";
 
 export default function HomeScreen() {
   const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -31,6 +32,15 @@ export default function HomeScreen() {
           name="Registration"
           options={{ headerShown: false }}
           component={Registration}
+        />
+        <Stack.Screen
+          name="EditUsers"
+          options={{
+            headerRight: () => (
+              <LoggedInHeader/>
+            ),
+          }}
+          component={EditUsers}
         />
       </Stack.Navigator>
   );

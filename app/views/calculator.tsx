@@ -86,7 +86,7 @@ export default function Calculator({navigation}: NavProps) {
     <KeyboardAvoidingView
       behavior={Platform.OS == "ios" ? "padding" : "height"}
     >
-      <View style={genericCss.container}>
+      <View testID="calc-component" style={genericCss.container}>
         <View style={formCss.formContainer}>
           <Text style={formCss.formTitle}>Calculadora do Ponto - 8 horas</Text>
           <View style={formCss.formItems}>

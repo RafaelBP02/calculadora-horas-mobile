@@ -17,7 +17,7 @@ const LoggedInHeader = () => {
     return null;
 
   return (
-    <View>
+    <View testID="logged-component">
       <Text>Bem vindo(a) {user.email}</Text>
       <Button color={colors.primary} onPress={() => logoutUser()} title="Logout" />
     </View>

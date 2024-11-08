@@ -2,12 +2,12 @@ import React from "react";
 import { fireEvent, render } from "@testing-library/react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import HomeScreen from "@/app/(tabs)";
-import Calculator from "@/app/(tabs)/calculator";
+import Calculator from "@/app/views/calculator";
 
 jest.mock("@/app/views/home", () => () => <div>Home</div>);
 jest.mock("@/app/views/login", () => () => <div>Login</div>);
 jest.mock("@/app/views/registration", () => () => <div>Registration</div>);
-jest.mock("@/app/(tabs)/calculator", () => () => <div>Calculator</div>);
+jest.mock("@/app/views/calculator", () => () => <div>Calculator</div>);
 jest.mock("@/components/LoggedInHeader", () => () => <div>LoggedInHeader</div>);
 
 describe("HomeScreen Navigation", () => {
