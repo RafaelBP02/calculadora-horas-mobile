@@ -8,13 +8,15 @@ import { TextInput } from "react-native-gesture-handler";
 type NavProps = NativeStackScreenProps<RootStackParamList, "UserEditorTool">;
 
 
-export default function UserEditorTool({ navigation }: NavProps, selectedUser: CustomUser) {
+export default function UserEditorTool({ navigation, route }: NavProps) {
+    const {selectedUser} = route.params;
+
     return(
         <View style={genericCss.container}>
             <Text>Dados de {selectedUser.name} {selectedUser.surename}</Text>
             <Text>e-mail: {selectedUser.eMail}</Text>
             <Text>permissão: {selectedUser.role.roleName}</Text>
-            <TextInput value={selectedUser.workplace}>local de trabalho:</TextInput>
+            <TextInput value={selectedUser.workplace}></TextInput>
         </View>
     )
 }
