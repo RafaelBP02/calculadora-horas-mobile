@@ -6,6 +6,7 @@ import { Button, Text, View } from "react-native";
 import { TextInput } from "react-native-gesture-handler";
 import { userCss } from "@/assets/css/UserCss";
 import { colors, formCss } from "@/assets/css/FormsCss";
+import { Ionicons } from "@expo/vector-icons";
 
 type NavProps = NativeStackScreenProps<RootStackParamList, "UserEditorTool">;
 
@@ -26,8 +27,9 @@ export default function UserEditorTool({ navigation, route }: NavProps) {
         <Text style={userCss.dataValue}>{selectedUser.role.roleName}</Text>
       </View>
       <View style={userCss.dataContainer}>
-        <Text style={userCss.dataInfo}>trabalho</Text>
-        <TextInput value={selectedUser.workplace}></TextInput>
+        <Text style={userCss.inputInfo}>trabalho</Text>
+        <TextInput style={userCss.dataValue} value={selectedUser.workplace}></TextInput>
+        <Ionicons style={{backgroundColor: colors.shadow}} testID="pencilBtn" name="pencil" size={20} color={colors.black}/>
       </View>
       <View style={formCss.button}>
         <Button title="voltar" color={colors.secondary} onPress={() => navigation.navigate("EditUsers")}/>

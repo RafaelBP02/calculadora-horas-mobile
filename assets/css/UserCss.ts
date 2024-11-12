@@ -5,7 +5,7 @@ const userCss = StyleSheet.create({
     dataContainer:{
         width:"80%",
         flexDirection:"row",
-        marginBottom:8,
+        marginBottom:10,
     },
     dataInfo:{
         width:"30%",
@@ -16,7 +16,21 @@ const userCss = StyleSheet.create({
         paddingLeft:10,
         paddingRight:10,
         backgroundColor:colors.shadow,
+    },
+    inputInfo:{
+        paddingTop: 3,
+        width:"30%",
+        textTransform:"uppercase",
+        fontWeight:"bold"
+    },
+    inputValue:{
+        
+        paddingLeft:10,
+        paddingRight:10,
+        backgroundColor: colors.white
     }
+
+    
 
 })
 
