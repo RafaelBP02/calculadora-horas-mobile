@@ -9,6 +9,7 @@ import {
   View,
   ActivityIndicator,
   FlatList,
+  Button,
 } from "react-native";
 import { NativeStackNavigationProp, NativeStackScreenProps } from "react-native-screens/lib/typescript/native-stack/types";
 import { CustomUser } from "../models/userModel";
@@ -60,10 +61,16 @@ export default function EditUsers({ navigation }: NavProps) {
       setHasMore(false); 
     }
   };
+
+  const refreshPage = () => {
+    setLoading(true);
+    setLoading(false);
+    
+  }
   
   useEffect(() => {
     updateUsers();
-  }, []);
+  }, [loading]);
   
   useEffect(() => {
     if (allUsers.length > 0) {
@@ -81,6 +88,9 @@ export default function EditUsers({ navigation }: NavProps) {
       )}
       {!loading && (
         <View style={genericCss.mediumContainer}>
+          <View style={{width:"100%" ,alignItems:"flex-end"}}>
+            <Button title="Atualizar" color={colors.secondary} onPress={() => refreshPage()}/>
+          </View>
           <FlatList
             testID="flatlist"
             data={listToRender}
