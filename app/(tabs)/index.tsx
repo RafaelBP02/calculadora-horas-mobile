@@ -8,6 +8,7 @@ import { useContext } from "react";
 import Registration from "../views/registration";
 import Calculator from "../views/calculator";
 import EditUsers from "../views/editUsers";
+import UserEditorTool from "../views/userEditorTool";
 
 export default function HomeScreen() {
   const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -42,6 +43,16 @@ export default function HomeScreen() {
           }}
           component={EditUsers}
         />
+        <Stack.Screen
+          name="UserEditorTool"
+          options={{
+            headerRight: () => (
+              <LoggedInHeader/>
+            ),
+          }}
+          component={UserEditorTool}
+        />
+        
       </Stack.Navigator>
   );
 }

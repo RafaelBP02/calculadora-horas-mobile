@@ -9,8 +9,9 @@ import {
   View,
   ActivityIndicator,
   FlatList,
+  Button,
 } from "react-native";
-import { NativeStackScreenProps } from "react-native-screens/lib/typescript/native-stack/types";
+import { NativeStackNavigationProp, NativeStackScreenProps } from "react-native-screens/lib/typescript/native-stack/types";
 import { CustomUser } from "../models/userModel";
 import { AdministrationController } from "../controller/administrationController";
 import TokenContext from "@/contexts/Token";
@@ -60,10 +61,16 @@ export default function EditUsers({ navigation }: NavProps) {
       setHasMore(false); 
     }
   };
+
+  const refreshPage = () => {
+    setLoading(true);
+    setLoading(false);
+    
+  }
   
   useEffect(() => {
     updateUsers();
-  }, []);
+  }, [loading]);
   
   useEffect(() => {
     if (allUsers.length > 0) {
@@ -81,10 +88,13 @@ export default function EditUsers({ navigation }: NavProps) {
       )}
       {!loading && (
         <View style={genericCss.mediumContainer}>
+          <View style={{width:"100%" ,alignItems:"flex-end"}}>
+            <Button title="Atualizar" color={colors.secondary} onPress={() => refreshPage()}/>
+          </View>
           <FlatList
             testID="flatlist"
             data={listToRender}
-            renderItem={({ item }) => <ListItem data={item}/>}
+            renderItem={({ item }) => <ListItem data={item} navigation={navigation}/>}
             keyExtractor={(item) => item.id.toString()}
             onEndReached={() => updateListRendering(allUsers)}
             onEndReachedThreshold={0.5}
@@ -100,13 +110,18 @@ export default function EditUsers({ navigation }: NavProps) {
   );
 }
 
-function ListItem({data}: {data:CustomUser}) {
+type ListItemProps = {
+  data: CustomUser,
+  navigation: NativeStackNavigationProp<RootStackParamList, 'EditUsers'>
+};
+
+function ListItem({ data, navigation}: ListItemProps) {
   return (
     <View style={tableCss.row}>
       <Text style={tableCss.cell}>{data.name || 'Nome não disponível'}</Text>
       <Text style={tableCss.cell}>{data.workplace || 'Local de trabalho não disponível'}</Text>
-      <TouchableOpacity onPress={() => console.log(`usuario: ${data.name, data.id}`)}>
-        <Ionicons testID="pencilBtn" name="pencil" size={20} color={colors.primary} />
+      <TouchableOpacity onPress={() => navigation.navigate('UserEditorTool', {selectedUser: data})}>
+        <Ionicons testID="pencilBtn" name="pencil" size={20} color={colors.primary}/>
       </TouchableOpacity>
     </View>
   );
