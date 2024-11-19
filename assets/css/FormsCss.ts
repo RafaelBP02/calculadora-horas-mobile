@@ -48,6 +48,12 @@ const formCss = StyleSheet.create({
     justifyContent: 'center',
     backgroundColor: colors.shadow
   },
+  formSwitch:{
+    flexDirection: "row",
+    alignItems:"center",
+    justifyContent:"center",
+    gap: 10
+  },
   formTitle:{
     flexShrink: 1,
     width:'100%',

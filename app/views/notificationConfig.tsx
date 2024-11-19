@@ -28,6 +28,7 @@ export default function NotificationConfig({ navigation }: NavProps) {
   const [inicioIntervalo, setInicioIntervalo] = useState<string>("");
   const [fimIntervalo, setFimIntervalo] = useState<string>("");
   const [fimExpediente, setFimExpediente] = useState<string>("");
+  const [isEnabled, setIsEnabled] = useState<boolean>(false);
 
   const handleNotificationConfig = () => {
     const dataIE = Conversions.parseTimeString(inicioExpediente);
@@ -110,9 +111,16 @@ export default function NotificationConfig({ navigation }: NavProps) {
               keyboardType="numeric"
             />
           </View>
-          <View style={formCss.button}>
+          <View style={formCss.formSwitch}>
+            <Text>Habilitar notificações</Text>
             <Switch
+                onValueChange={() => setIsEnabled(!isEnabled)}
+                value={isEnabled}
             />
+          </View>
+          
+          <View style={formCss.button}>
+            
             <Button
               title="salvar"
               color={colors.primary}
