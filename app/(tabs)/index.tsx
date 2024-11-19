@@ -9,6 +9,7 @@ import Registration from "../views/registration";
 import Calculator from "../views/calculator";
 import EditUsers from "../views/editUsers";
 import UserEditorTool from "../views/userEditorTool";
+import NotificationConfig from "../views/notificationConfig";
 
 export default function HomeScreen() {
   const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -51,6 +52,15 @@ export default function HomeScreen() {
             ),
           }}
           component={UserEditorTool}
+        />
+        <Stack.Screen
+          name="NotificationConfig"
+          options={{
+            headerRight: () => (
+              <LoggedInHeader/>
+            ),
+          }}
+          component={NotificationConfig}
         />
         
       </Stack.Navigator>

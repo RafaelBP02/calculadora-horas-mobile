@@ -24,6 +24,11 @@ export default function Home({ navigation }: NavProps) {
           color={colors.primary}
           onPress={() => navigation.navigate("Calculator")}
         />
+        {user.email && <Button
+          title="notificações"
+          color={colors.primary}
+          onPress={() => navigation.navigate("NotificationConfig")}
+        />}
         {!user.email && <Button
           title="login"
           color={colors.primary}
