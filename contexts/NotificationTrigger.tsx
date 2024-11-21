@@ -4,7 +4,7 @@ interface Props{
   children: React.ReactNode
 }
 
-export type AlertType = {
+export type CustomAlertType = {
   inicioExpediente: string;
   inicioIntervalo: string;
   fimIntervalo: string;
@@ -12,8 +12,8 @@ export type AlertType = {
 };
 
 export type PropsNotificationTriggerContext = {
-  alertClock: AlertType;
-  setAlertClock: React.Dispatch<React.SetStateAction<AlertType>>;
+  alertClock: CustomAlertType;
+  setAlertClock: React.Dispatch<React.SetStateAction<CustomAlertType>>;
 };
 
 export const DEFAULT_ALERT_VALUE = {
@@ -30,7 +30,7 @@ const NotificationTriggerContext = createContext<PropsNotificationTriggerContext
 
 const NotificationTriggerContextProvider: React.FC<Props> = ({ children }) => {
   
-  const [user, setUser] = useState<AlertType>(DEFAULT_ALERT_VALUE.alertClock);
+  const [user, setUser] = useState<CustomAlertType>(DEFAULT_ALERT_VALUE.alertClock);
 
   return (
     <NotificationTriggerContext.Provider value={{ alertClock: user, setAlertClock: setUser }}>

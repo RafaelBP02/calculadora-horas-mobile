@@ -17,7 +17,7 @@ import {
 import { NativeStackScreenProps } from "react-native-screens/lib/typescript/native-stack/types";
 import { ConfigsController } from "../controller/configsController";
 import TokenContext from "@/contexts/Token";
-import NotificationTriggerContext, { AlertType } from "@/contexts/NotificationTrigger";
+import NotificationTriggerContext, { CustomAlertType } from "@/contexts/NotificationTrigger";
 
 type NavProps = NativeStackScreenProps<
   RootStackParamList,
@@ -65,7 +65,7 @@ export default function NotificationConfig({ navigation }: NavProps) {
     console.log("enviando dados salvos...");
     await ConfigsController.worktimeAlarmConfig(token, iExpediente, iIntervalo, fIntervalo, fExpediente, user.id);
     
-    const clockCopy: AlertType = {
+    const clockCopy: CustomAlertType = {
       inicioExpediente: iExpediente,
       inicioIntervalo: iIntervalo,
       fimIntervalo: fIntervalo,

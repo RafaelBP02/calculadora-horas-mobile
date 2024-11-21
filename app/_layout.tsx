@@ -14,6 +14,7 @@ import { AuthContextProvider } from "@/contexts/Auth";
 import { TokenContextProvider } from "@/contexts/Token";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { NotificationTriggerContextProvider } from "@/contexts/NotificationTrigger";
+import NotificationScheduler from "@/components/NotificationScheduler";
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
@@ -40,6 +41,7 @@ export default function RootLayout() {
         <TokenContextProvider>
           <AuthContextProvider>
             <NotificationTriggerContextProvider>
+              <NotificationScheduler/>
               <Stack>
                 <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
                 <Stack.Screen name="+not-found" />
