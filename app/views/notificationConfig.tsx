@@ -17,6 +17,7 @@ import {
 import { NativeStackScreenProps } from "react-native-screens/lib/typescript/native-stack/types";
 import { ConfigsController } from "../controller/configsController";
 import TokenContext from "@/contexts/Token";
+import NotificationTriggerContext, { AlertType } from "@/contexts/NotificationTrigger";
 
 type NavProps = NativeStackScreenProps<
   RootStackParamList,
@@ -26,7 +27,7 @@ type NavProps = NativeStackScreenProps<
 export default function NotificationConfig({ navigation }: NavProps) {
   const { user } = useContext(AuthContext);
   const { token } = useContext(TokenContext);
-
+  const { alertClock, setAlertClock } = useContext(NotificationTriggerContext);
 
   const [inicioExpediente, setInicioExpediente] = useState<string>("");
   const [inicioIntervalo, setInicioIntervalo] = useState<string>("");
@@ -63,6 +64,16 @@ export default function NotificationConfig({ navigation }: NavProps) {
   ) => {
     console.log("enviando dados salvos...");
     await ConfigsController.worktimeAlarmConfig(token, iExpediente, iIntervalo, fIntervalo, fExpediente, user.id);
+    
+    const clockCopy: AlertType = {
+      inicioExpediente: iExpediente,
+      inicioIntervalo: iIntervalo,
+      fimIntervalo: fIntervalo,
+      fimExpediente: fExpediente
+    }
+
+    setAlertClock(clockCopy);
+
   };
 
   const limparHorarios = () => {
