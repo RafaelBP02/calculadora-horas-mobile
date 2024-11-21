@@ -15,6 +15,8 @@ import {
   View,
 } from "react-native";
 import { NativeStackScreenProps } from "react-native-screens/lib/typescript/native-stack/types";
+import { ConfigsController } from "../controller/configsController";
+import TokenContext from "@/contexts/Token";
 
 type NavProps = NativeStackScreenProps<
   RootStackParamList,
@@ -23,6 +25,8 @@ type NavProps = NativeStackScreenProps<
 
 export default function NotificationConfig({ navigation }: NavProps) {
   const { user } = useContext(AuthContext);
+  const { token } = useContext(TokenContext);
+
 
   const [inicioExpediente, setInicioExpediente] = useState<string>("");
   const [inicioIntervalo, setInicioIntervalo] = useState<string>("");
@@ -30,18 +34,14 @@ export default function NotificationConfig({ navigation }: NavProps) {
   const [fimExpediente, setFimExpediente] = useState<string>("");
   const [isEnabled, setIsEnabled] = useState<boolean>(false);
 
+
   const handleNotificationConfig = () => {
     const dataIE = Conversions.parseTimeString(inicioExpediente);
     const dataII = Conversions.parseTimeString(inicioIntervalo);
     const dataFI = Conversions.parseTimeString(fimIntervalo);
     const dataFE = Conversions.parseTimeString(fimExpediente);
 
-    if (
-      dataIE === null ||
-      dataII === null ||
-      dataFI === null ||
-      dataFE === null
-    ) {
+    if (dataIE === null || dataII === null || dataFI === null || dataFE === null) {
       Alert.alert(
         "Formato de hora inválido",
         "Por favor, apenas números, insira a hora no formato HH:MM."
@@ -52,17 +52,17 @@ export default function NotificationConfig({ navigation }: NavProps) {
 
     console.log("sucesso dados validados");
 
-    enviarHorarioConfigurado(dataIE, dataII, dataFI, dataFE);
+    enviarHorarioConfigurado(inicioExpediente, inicioIntervalo, fimIntervalo, fimExpediente);
   };
 
   const enviarHorarioConfigurado = async (
-    iExpediente: Date,
-    iIntervalo: Date,
-    fIntervalo: Date,
-    fExpediente: Date
+    iExpediente: string,
+    iIntervalo: string,
+    fIntervalo: string,
+    fExpediente: string
   ) => {
     console.log("enviando dados salvos...");
-    //TODO: async API call
+    await ConfigsController.worktimeAlarmConfig(token, iExpediente, iIntervalo, fIntervalo, fExpediente, user.id);
   };
 
   const limparHorarios = () => {
