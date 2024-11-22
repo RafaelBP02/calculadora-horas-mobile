@@ -1,3 +1,4 @@
+import { CustomErrorMessage } from "@/constants/customTypes";
 import { API_ENDPOINTS } from "./api-endpoints";
 
 export interface SavedAlarm {
@@ -79,7 +80,9 @@ export class ConfigsController {
       });
 
       if (!response.ok) {
-        throw new Error(`Error: ${response.status}`);
+        const errorData: CustomErrorMessage = await response.json();
+        const errorMessage = errorData.errorMessage || `Error: ${response.status}`;
+        throw new Error(errorMessage);
       }
 
       return await response.json();

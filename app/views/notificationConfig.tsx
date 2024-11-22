@@ -1,6 +1,6 @@
 import { colors, formCss } from "@/assets/css/FormsCss";
 import { genericCss } from "@/assets/css/GenericCss";
-import { RootStackParamList } from "@/constants/customTypes";
+import { CustomErrorMessage, ErrorMessage, RootStackParamList } from "@/constants/customTypes";
 import AuthContext from "@/contexts/Auth";
 import { Conversions } from "@/utils/Conversions";
 import React, { useContext, useEffect, useState } from "react";
@@ -82,6 +82,28 @@ export default function NotificationConfig({ navigation }: NavProps) {
     setFimIntervalo("");
     setFimExpediente("");
   };
+
+  const updateRegisteredAlerts = async() =>{
+
+    try{
+      
+      const data = await ConfigsController.findWorktimeAlarmConfig(token);
+      
+      setInicioExpediente(data.workEntry);
+      setInicioIntervalo(data.intervalBeginning);
+      setFimIntervalo(data.intervalEnd);
+      setFimExpediente(data.workEnd);
+
+    }catch(error){
+      Alert.alert("Bem vindo(a) !", "Por favor, configure seus horarios de alerta");
+
+    }
+
+  }
+
+  useEffect(() => {
+    updateRegisteredAlerts();    
+  }, []);
 
   useEffect(() => {}, [user]);
 

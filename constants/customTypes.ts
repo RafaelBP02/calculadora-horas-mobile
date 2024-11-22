@@ -9,3 +9,7 @@ export type RootStackParamList = {
     NotificationConfig: undefined;
     UserEditorTool:  { selectedUser: CustomUser };
   };
+
+export type CustomErrorMessage = {
+  errorMessage: string
+}
