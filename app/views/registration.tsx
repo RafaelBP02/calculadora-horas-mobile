@@ -47,7 +47,7 @@ export default function Registration({ navigation }: NavProps) {
       console.log(userRegistration.concluido);
       navigation.navigate("Login");
     } catch (error) {
-      console.error("erro na hora de cadastrar");
+      console.log("erro na hora de cadastrar");
     }
   };
 

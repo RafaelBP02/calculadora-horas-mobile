@@ -59,14 +59,14 @@ export default function Login({navigation}: NavProps) {
       navigation.navigate("Home");
   
     } catch (error) {
-      console.error("Erro ao fazer login:", error);
+      console.log("Erro ao fazer login:", error);
     }
 
   };
 
   const decodeBearerToken = (token: string) => {
     if (!token) {
-      console.error("Erro ao recuperar o token");
+      console.log("Erro ao recuperar o token");
       return;
     }
 
@@ -77,7 +77,7 @@ export default function Login({navigation}: NavProps) {
       setUser({id: subObject.userId, email: subObject.username, role: jwtPayload.papel } )
 
     } catch (error) {
-      console.error('Erro ao decodificar o JWT:', error);
+      console.log('Erro ao decodificar o JWT:', error);
     }
   }
 

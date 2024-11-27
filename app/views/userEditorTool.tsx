@@ -32,7 +32,7 @@ export default function UserEditorTool({ navigation, route }: NavProps) {
         );
       });
     } catch (error) {
-      console.error("Erro ao atualizar usuario:", error);
+      console.log("Erro ao atualizar usuario:", error);
     }
   };
 

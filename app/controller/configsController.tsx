@@ -87,7 +87,7 @@ export class ConfigsController {
 
       return await response.json();
     } catch (error) {
-      console.error("Fetch data failed", error);
+      console.log("Fetch data failed", error);
       throw error;
     }
   }
